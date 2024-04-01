@@ -7,6 +7,9 @@
 - **CI Project Overview**
 
   - I am creating a Docker image and container to speed up the process of hosting a website using NGINX.
+
+  ![alt text](./images/diagram.png)
+
   - Utilizing Docker, Docker Hub, and a Dockerfile.
 
 - **Run Project Locally**
@@ -68,7 +71,7 @@
     docker login -u (username)
     ```
 
-    - Enter password and then the token when prompted.
+    - Enter username and then the token when prompted.
 
 - **Pushing Container Image to Dockerhub**
 
@@ -79,3 +82,24 @@
     docker login
     docker push <dockerhub_username>/<repository_name>:<tag>
     ```
+
+  - Dockerhub link
+    - https://hub.docker.com/repository/docker/1blckhrt/dockerhubrepo/general
+
+- **Configuring GitHub Secrets**
+
+  - How to set a secret
+    - go to the GitHub repo you want to setup a secret for
+    - go to settings -> secrets -> new repo secret
+    - enter name and value
+    - add secret
+  - secrets that are set for this project
+    - Dockerhub token
+
+- **Behavior of GitHub workflow**
+
+  - triggered upon a defined event, such as a git push, pull, etc
+  - automates various tasks
+
+  - Dockerhub token and file paths are specific to my project
+    - will need to be changed if someone else uses it
