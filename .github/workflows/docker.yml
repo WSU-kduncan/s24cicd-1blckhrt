@@ -22,6 +22,8 @@ jobs:
       - name: Generate Docker metadata
         id: metadata
         uses: docker/metadata-action@v3
+        with:
+          images: 1blckhrt/dockerhubrepo
 
       - name: Build Docker image
         run: docker build -t 1blckhrt/dockerhubrepo .
