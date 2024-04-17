@@ -63,7 +63,7 @@
       docker run -d -p 80:80 --name nginx --restart always 1blckhrt/dockerhubrepo:1.2.1
       ```
 
-    - allows me to setup a new docker image and stop/remove the existing one
+    - allows me to setup a new docker image and stop/remove the existing one, will eventually be used with the webhook
 
     - should be in home directory of user just for ease of access
 
@@ -103,8 +103,8 @@
     WantedBy=multi-user.target
     ```
 
-  - sudo systemctl daemon-reload
-  - sudo systemctl enable webhook
-  - sudo systemctl start webhook
+  - `sudo systemctl daemon-reload`
+  - `sudo systemctl enable webhook`
+  - `sudo systemctl start webhook`
 
-http://34.224.251.5:9000/hooks/nginx_webhook
+  - update workflow to curl the public IP of the instance
