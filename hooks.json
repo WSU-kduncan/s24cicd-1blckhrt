@@ -1,0 +1,10 @@
+{
+  "webhooks": [
+    {
+      "id": "nginx_webhook",
+      "execute-command": "/home/ubuntu/deploy.sh",
+      "command-working-directory": "/home/ubuntu",
+      "response-message": "Webhook received and task triggered successfully."
+    }
+  ]
+}

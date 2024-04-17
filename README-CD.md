@@ -21,3 +21,90 @@
 - Link to DockerHub repository
 
   - https://hub.docker.com/repository/docker/1blckhrt/dockerhubrepo/general
+
+### Part 2 - Deployment
+
+- Install docker on the instance
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  ```
+
+  ```bash
+
+  echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt-get update
+  ```
+
+- setup deploy script and make sure to chmod +x it
+
+  - `deploy.sh`
+
+    - ```bash
+      #! /bin/bash
+      # kill old processes
+
+      docker stop nginx
+      docker remove nginx
+
+      # pull fresh image
+
+      docker pull 1blckhrt/dockerhubrepo:1.2.1
+
+      # run new image
+
+      docker run -d -p 80:80 --name nginx --restart always 1blckhrt/dockerhubrepo:1.2.1
+      ```
+
+    - allows me to setup a new docker image and stop/remove the existing one
+
+    - should be in home directory of user just for ease of access
+
+- install webhook
+
+  - `sudo apt-get install webhook`
+
+- `webhook` task definition file
+  - ```
+    # Webhook Configuration
+    webhooks:
+      - id: nginx_webhook
+        execute-command: "deploy.sh"
+        command-working-directory: "/home/ubuntu"
+        pass-arguments-to-command:
+        response-message: "Webhook received and task triggered successfully."
+    ```
+- `/home/ubuntu` is the location of the task definition file
+
+- how to start the webhook
+
+  - `webhook -hooks hooks.json` (in home directory)
+
+- make it so that the webhook turns on automatically at boot
+
+  - `sudo vim /lib/systemd/system/webhook.service`
+  - ```
+    [Unit]
+    Description=Webhook Service
+    After=network.target
+
+    [Service]
+    User=ubuntu
+    ExecStart=/path/to/webhook -hooks /home/ubuntu/hooks.json
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+  - sudo systemctl daemon-reload
+  - sudo systemctl enable webhook
+  - sudo systemctl start webhook
+
+http://34.224.251.5:9000/hooks/nginx_webhook

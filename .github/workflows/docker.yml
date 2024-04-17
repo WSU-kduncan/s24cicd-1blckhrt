@@ -37,3 +37,6 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push 1blckhrt/dockerhubrepo:${{ steps.extract_version.outputs.version }}
+
+      - name: Curl to nginx webhook
+        run: curl 34.224.251.5:9000/hooks/nginx_webhook
