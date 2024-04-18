@@ -1,6 +1,6 @@
 # Name: Parker Williams
 
-# NOTE: You may need to download the video from the repo, it won't show up on GitHub even though it's embedded
+# NOTE: You may need to download the video from the repo or use a link, it won't show up on GitHub even though it's embedded
 
 ## Project 5
 
@@ -115,9 +115,11 @@
 
 # Proof of flow
 
-# If this doesn't show up for you, download the video in the `./videos` folder
+# If this doesn't show up for you, download the video in the `./videos` folder or visit this youtube link
 
 <video controls src="./videos/test.mp4" title="Test video"></video>
+
+https://www.youtube.com/watch?v=zwOFXH7-7rI
 
 # Resources
 
