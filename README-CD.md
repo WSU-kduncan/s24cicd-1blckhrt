@@ -56,16 +56,16 @@
 
       # pull fresh image
 
-      docker pull 1blckhrt/dockerhubrepo:1.2.1
+      docker pull 1blckhrt/dockerhubrepo:2.0.1
 
       # run new image
 
-      docker run -d -p 80:80 --name nginx --restart always 1blckhrt/dockerhubrepo:1.2.1
+      docker run -d -p 80:80 --name nginx --restart always 1blckhrt/dockerhubrepo:2.0.1
       ```
 
     - allows me to setup a new docker image and stop/remove the existing one, will eventually be used with the webhook
 
-    - should be in home directory of user just for ease of access
+    - should be in home directory of user (ubuntu) just for ease of access
 
 - install webhook
 
@@ -108,3 +108,7 @@
   - `sudo systemctl start webhook`
 
   - update workflow to curl the public IP of the instance
+
+# Proof of flow
+
+<video controls src="./videos/test.mp4" title="Test video"></video>
