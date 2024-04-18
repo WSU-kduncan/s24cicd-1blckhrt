@@ -6,6 +6,8 @@
 
 - CD Project Overview
 
+  ![alt text](./images/diagram.png)
+
   - The point of this project is to use semantic versioning for Docker images that are pushed to DockerHub whenever `git` tags are pushed, using GitHub Actions. We are also using webhooks to make sure our repository and image are up to date.
 
 - Generating a tag in `git` / GitHub
@@ -112,3 +114,9 @@
 # Proof of flow
 
 <video controls src="./videos/test.mp4" title="Test video"></video>
+
+# Resources
+
+ChatGPT
+Webhook Repository
+Docker Documentation
