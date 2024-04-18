@@ -1,5 +1,7 @@
 # Name: Parker Williams
 
+# NOTE: You may need to download the video from the repo, it won't show up on GitHub even though it's embedded
+
 ## Project 5
 
 ### Part 1 - Semantic Versioning
@@ -113,10 +115,12 @@
 
 # Proof of flow
 
+# If this doesn't show up for you, download the video in the `./videos` folder
+
 <video controls src="./videos/test.mp4" title="Test video"></video>
 
 # Resources
 
-ChatGPT
-Webhook Repository
-Docker Documentation
+- ChatGPT
+- Webhook Repository
+- Docker Documentation
